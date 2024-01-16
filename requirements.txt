@@ -6,9 +6,10 @@ sentence-transformers
 faiss-cpu
 tiktoken
 openai
-pypdf
 loguru
+pypdf
 docx2txt
+python-pptx
 
 # pysqlite3-wheels
 # streamlit

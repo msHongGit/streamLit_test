@@ -43,7 +43,7 @@ def main():
 
     # with 구문 : 구성 요소에 딸린 요소를 정하기 위한거
     with st.sidebar:
-        uploaded_files =  st.file_uploader("Upload your file", type=['pdf','docx', 'pptx'], accept_multiple_files=True)
+        uploaded_files =  st.file_uploader("Upload your file", type=['pdf','docx','pptx'], accept_multiple_files=True)
         openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
         process = st.button("Process")
 
@@ -93,9 +93,9 @@ def main():
 
                 st.markdown(response)
                 with st.expander("참고 문서 확인"):
-                    st.markdown(source_documents[0].metadata['source'], help = check_uncode(source_documents[0].page_content))    # help : ? 부분에 마우스를 올리면 text 띄움
-                    st.markdown(source_documents[1].metadata['source'], help = check_uncode(source_documents[1].page_content))
-                    st.markdown(source_documents[2].metadata['source'], help = check_uncode(source_documents[2].page_content))
+                    st.markdown(source_documents[0].metadata['source'], help = check_uncode(str(source_documents[0].page_content)))    # help : ? 부분에 마우스를 올리면 text 띄움
+                    st.markdown(source_documents[1].metadata['source'], help = check_uncode(str(source_documents[1].page_content)))
+                    st.markdown(source_documents[2].metadata['source'], help = check_uncode(str(source_documents[2].page_content)))
 
         # Add assistant message to chat history
         st.session_state.messages.append({"role": "assistant", "content": response})
