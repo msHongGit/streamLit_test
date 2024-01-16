@@ -91,9 +91,9 @@ def main():
 
                 st.markdown(response)
                 with st.expander("참고 문서 확인"):
-                    st.markdown(source_documents[0].metadata['source'], help = str(source_documents[0].page_content).replace(u"\uFFFD", " "))    # help : ? 부분에 마우스를 올리면 text 띄움
-                    st.markdown(source_documents[1].metadata['source'], help = str(source_documents[1].page_content).replace(u"\uFFFD", " "))
-                    st.markdown(source_documents[2].metadata['source'], help = str(source_documents[2].page_content).replace(u"\uFFFD", " "))
+                    st.markdown(source_documents[0].metadata['source'], help = source_documents[0])    # help : ? 부분에 마우스를 올리면 text 띄움
+                    st.markdown(source_documents[1].metadata['source'], help = source_documents[1])
+                    st.markdown(source_documents[2].metadata['source'], help = source_documents[2])
 
         # Add assistant message to chat history
         st.session_state.messages.append({"role": "assistant", "content": response})
