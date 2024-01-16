@@ -93,9 +93,9 @@ def main():
 
                 st.markdown(response)
                 with st.expander("참고 문서 확인"):
-                    st.markdown(source_documents[0].metadata['source'], help = check_uncode(str(source_documents[0].page_content)))    # help : ? 부분에 마우스를 올리면 text 띄움
-                    st.markdown(source_documents[1].metadata['source'], help = check_uncode(str(source_documents[1].page_content)))
-                    st.markdown(source_documents[2].metadata['source'], help = check_uncode(str(source_documents[2].page_content)))
+                    st.markdown(source_documents[0].metadata['source'], help = source_documents[0].page_content)    # help : ? 부분에 마우스를 올리면 text 띄움
+                    st.markdown(source_documents[1].metadata['source'], help = source_documents[1].page_content)
+                    st.markdown(source_documents[2].metadata['source'], help = source_documents[2].page_content)
 
         # Add assistant message to chat history
         st.session_state.messages.append({"role": "assistant", "content": response})
@@ -157,14 +157,6 @@ def get_conversation_chain(vetorestore, openai_api_key):
             verbose=True
         )
     return conversation_chain
-
-def check_uncode(str_text):
-    try:
-        s2 = codecs.encode(str_text, "utf-8")
-        return (True, str_text, None)
-    except Exception as e:
-        ret = codecs.decode(codecs.encode(str_text, "utf-8", "replace"), "utf-8")
-        return (False, ret, e)
 
 if __name__ == '__main__':
     main()
