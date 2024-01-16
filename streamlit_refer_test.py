@@ -24,7 +24,8 @@ from langchain.memory import StreamlitChatMessageHistory
 def main():
     st.set_page_config(
     page_title="DirChat",
-    page_icon=":books:")
+    page_icon=":books:",
+    )
 
     st.title("_Private Data :red[QA Chat]_ :books:")        #_: 이텔릭체, red[] : 빨간색
 
@@ -107,7 +108,7 @@ def get_text(docs):
     
     for doc in docs:
         file_name = doc.name  # doc 객체의 이름을 파일 이름(임시 저장 경로)으로 사용
-        with open(file_name, "wb") as file:  # 파일을 doc.name으로 저장
+        with open(file_name, "wb", encoding="utf-8") as file:  # 파일을 doc.name으로 저장
             file.write(doc.getvalue())
             logger.info(f"Uploaded {file_name}")
 
