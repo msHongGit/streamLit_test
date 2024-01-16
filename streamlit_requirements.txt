@@ -1,0 +1,13 @@
+streamlit
+pysqlite3-wheels
+langchain
+chromadb
+unstructured
+sentence-transformers
+faiss-cpu
+tiktoken
+openai
+pypdf
+loguru
+docx2txt
+# pysqlite3-binary
