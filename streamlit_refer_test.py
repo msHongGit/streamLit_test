@@ -91,9 +91,9 @@ def main():
 
                 st.markdown(response)
                 with st.expander("참고 문서 확인"):
-                    st.markdown(source_documents[0].metadata['source'], help = source_documents[0].page_content)    # help : ? 부분에 마우스를 올리면 text 띄움
-                    st.markdown(source_documents[1].metadata['source'], help = source_documents[1].page_content)
-                    st.markdown(source_documents[2].metadata['source'], help = source_documents[2].page_content)
+                    st.markdown(source_documents[0].metadata['source'], help = str(source_documents[0].page_content).replace(u"\uFFFD", " "))    # help : ? 부분에 마우스를 올리면 text 띄움
+                    st.markdown(source_documents[1].metadata['source'], help = str(source_documents[1].page_content).replace(u"\uFFFD", " "))
+                    st.markdown(source_documents[2].metadata['source'], help = str(source_documents[2].page_content).replace(u"\uFFFD", " "))
 
         # Add assistant message to chat history
         st.session_state.messages.append({"role": "assistant", "content": response})
@@ -108,7 +108,7 @@ def get_text(docs):
     
     for doc in docs:
         file_name = doc.name  # doc 객체의 이름을 파일 이름(임시 저장 경로)으로 사용
-        with open(file_name, "wb", encoding="utf-8") as file:  # 파일을 doc.name으로 저장
+        with open(file_name, "wb") as file:  # 파일을 doc.name으로 저장
             file.write(doc.getvalue())
             logger.info(f"Uploaded {file_name}")
 
